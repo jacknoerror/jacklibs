@@ -3,6 +3,7 @@ package com.jacktao.utils;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
@@ -571,5 +572,39 @@ public class JackUtils {
 		Uri content_url = Uri.parse(url);
 		intent.setData(content_url);
 		activity.startActivity(intent);
+	}
+	
+	/**
+	 * @param resources
+	 * @param context
+	 * @param filename
+	 */
+	public static void showPicInSysGal(Resources resources, Context context,String filename) {
+		AssetManager am = resources.getAssets();
+		File file = new File(Environment.getExternalStorageDirectory()
+				.toString(), filename);
+		if (file.exists()) {
+			Intent intent = new Intent(Intent.ACTION_VIEW);
+			intent.setDataAndType(Uri.fromFile(file), "image/*");
+			context.startActivity(intent);
+		} else {
+			InputStream inputStream;
+			try {
+				inputStream = am.open(filename);
+				FileOutputStream fos = new FileOutputStream(file);
+				byte[] buffer = new byte[1024];
+				int len = 0;
+				while ((len = inputStream.read(buffer)) != -1) {
+					fos.write(buffer, 0, len);
+				}
+				inputStream.close();
+				fos.close();
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+			Intent intent = new Intent(Intent.ACTION_VIEW);
+			intent.setDataAndType(Uri.fromFile(file), "image/*");
+			context.startActivity(intent);
+		}
 	}
 }
