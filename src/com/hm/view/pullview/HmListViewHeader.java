@@ -1,4 +1,4 @@
-package com.view.pullview;
+package com.hm.view.pullview;
 
 import android.content.Context;
 import android.graphics.Bitmap;
@@ -46,7 +46,7 @@ public class HmListViewHeader extends LinearLayout {
 	/** 时间的View. */
 	private TextView headerTimeView;
 	
-	/** 当前状:". */
+	/** 当前�?". */
 	private int mState = -1;
 
 	/** 向上的动:" */
@@ -180,7 +180,7 @@ public class HmListViewHeader extends LinearLayout {
 	}
 
 	/**
-	 * 设置状:".
+	 * 设置�?".
 	 *
 	 * @param state the new state
 	 */
@@ -329,7 +329,7 @@ public class HmListViewHeader extends LinearLayout {
     }
 
 	/**
-	 * 设置提示状:"文字的大:"
+	 * 设置提示�?"文字的大:"
 	 *
 	 * @param size the new state text size
 	 */
