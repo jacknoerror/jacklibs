@@ -1,4 +1,4 @@
-package com.hm.view.pullview;
+package com.view.pullview;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -30,10 +30,10 @@ public class HmMultiColumnListView extends ScrollView{
 	/** 当前第三列的高度. */
 	private int thirdColumnHeight;
 
-	/** 是否已加载过一次layout，这里onLayout中的初始化只需加载一次. */
+	/** 是否已加载过�?��layout，这里onLayout中的初始化只�?��载一�? */
 	private boolean loadOnce;
 	
-	/**  布局的高度。. */
+	/**  布局的高度�?. */
 	private static int scrollViewHeight;
 
 	/** 第一列的布局. */
@@ -45,7 +45,7 @@ public class HmMultiColumnListView extends ScrollView{
 	/** 第三列的布局. */
 	private LinearLayout thirdColumn;
 
-	/** 直接子布局. */
+	/** 直接子布�? */
 	private LinearLayout scrollLayout;
 
 	/**  Adapter. */
@@ -137,8 +137,8 @@ public class HmMultiColumnListView extends ScrollView{
 	}
 	
 	/**
-	 * 进行一些关键性的初始化操作，获取HmMultiColumnListView的高度，
-	 * 以及得到第一列的宽度值。并在这里开始加载第一页的图片。.
+	 * 进行�?��关键性的初始化操作，获取HmMultiColumnListView的高度，
+	 * 以及得到第一列的宽度值�?并在这里�?��加载第一页的图片�?
 	 *
 	 * @param changed the changed
 	 * @param l the l
@@ -202,8 +202,8 @@ public class HmMultiColumnListView extends ScrollView{
 
 	
 	/**
-	 * 找到此时应该添加View的一列。原则就是对三列的高度进行判断，
-	 * 当前高度最小的一列就是应该添加的一列。.
+	 * 找到此时应该添加View的一列�?原则就是对三列的高度进行判断�?
+	 * 当前高度�?��的一列就是应该添加的�?���?
 	 *
 	 * @param viewInfo the view info
 	 */
@@ -253,7 +253,7 @@ public class HmMultiColumnListView extends ScrollView{
 	@Override
     protected void onScrollChanged(int x, int y, int oldx, int oldy) {
         super.onScrollChanged(x, y, oldx, oldy);
-        //将不可见区域的资源释放
+        //将不可见区域的资源释�?
         HmViewInfo viewInfo = null;
         for(int i=0;i<mItems.size();i++){
         	viewInfo = mItems.get(i);
@@ -285,7 +285,7 @@ public class HmMultiColumnListView extends ScrollView{
     }
 	
 	/**
-	 * 遍历List中的每个View，对可见性进行检查.
+	 * 遍历List中的每个View，对可见性进行检�?
 	 *
 	 * @param position the position
 	 * @return true, if successful
@@ -314,7 +314,7 @@ public class HmMultiColumnListView extends ScrollView{
 		@Override
 		public void onChanged() {
 //			HmLogUtil.d(HmMultiColumnListView.class, "onChanged");
-			//判断是刷新还是添加
+			//判断是刷新还是添�?
     		int count = mAdapter.getCount();
     		if(count > mItems.size()){
     			//添加

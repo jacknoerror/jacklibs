@@ -1,4 +1,4 @@
-package com.hm.view.pullview;
+package com.view.pullview;
 
 import android.content.Context;
 import android.graphics.Bitmap;
@@ -19,13 +19,13 @@ import com.jacktao.R;
 import com.jacktao.utils.JackUtils;
 
 /**
- * 描述：下拉刷新的Header View类.
+ * 描述：下拉刷新的Header View:"
  *
  * @author xufx
  */
 public class HmListViewHeader extends LinearLayout {
 	
-	/** 上下文. */
+	/** 上下:" */
 	private Context mContext;
 	
 	/** 主View. */
@@ -46,13 +46,13 @@ public class HmListViewHeader extends LinearLayout {
 	/** 时间的View. */
 	private TextView headerTimeView;
 	
-	/** 当前状态. */
+	/** 当前状:". */
 	private int mState = -1;
 
-	/** 向上的动画. */
+	/** 向上的动:" */
 	private Animation mRotateUpAnim;
 	
-	/** 向下的动画. */
+	/** 向下的动:" */
 	private Animation mRotateDownAnim;
 	
 	/** 动画时间. */
@@ -70,7 +70,7 @@ public class HmListViewHeader extends LinearLayout {
 	/** 保存上一次的刷新时间. */
 	private String lastRefreshTime = null;
 	
-	/**  Header的高度. */
+	/**  Header的高:" */
 	private int headerHeight;
 
 	/**
@@ -103,14 +103,14 @@ public class HmListViewHeader extends LinearLayout {
 		
 		mContext  = context;
 		
-		//顶部刷新栏整体内容
+		//顶部刷新栏整体内:"		
 		headerView = new LinearLayout(context);
 		headerView.setOrientation(LinearLayout.HORIZONTAL);
 		headerView.setGravity(Gravity.CENTER); 
 		
 		headerView.setPadding( 0, 10, 0, 10);
 		
-		//显示箭头与进度
+		//显示箭头与进:"		
 		FrameLayout headImage =  new FrameLayout(context);
 		arrowImageView = new ImageView(context);
 		//从包里获取的箭头图片
@@ -118,7 +118,7 @@ public class HmListViewHeader extends LinearLayout {
 //		arrowImageView.setImageBitmap(arrowImage);
 		arrowImageView.setImageResource(R.drawable.ic_launcher);
 		
-		//style="?android:attr/progressBarStyleSmall" 默认的样式
+		//style="?android:attr/progressBarStyleSmall" 默认的样:"
 		headerProgressBar = new ProgressBar(context,null,android.R.attr.progressBarStyle);
 		headerProgressBar.setVisibility(View.GONE);
 		
@@ -129,7 +129,7 @@ public class HmListViewHeader extends LinearLayout {
 		headImage.addView(arrowImageView,layoutParamsWW);
 		headImage.addView(headerProgressBar,layoutParamsWW);
 		
-		//顶部刷新栏文本内容
+		//顶部刷新栏文本内:"		
 		LinearLayout headTextLayout  = new LinearLayout(context);
 		tipsTextview = new TextView(context);
 		headerTimeView = new TextView(context);
@@ -157,12 +157,12 @@ public class HmListViewHeader extends LinearLayout {
 		
 		LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(LayoutParams.FILL_PARENT, LayoutParams.WRAP_CONTENT);
 		lp.gravity = Gravity.BOTTOM;
-		//添加大布局
+		//添加大布:"
 		headerView.addView(headerLayout,lp);
 		
 		this.addView(headerView,lp);
-		//获取View的高度
-//		HmViewUtil.measureView(this);
+		//获取View的高:"
+		//		HmViewUtil.measureView(this);
 		headerHeight = this.getMeasuredHeight();
 		
 		mRotateUpAnim = new RotateAnimation(0.0f, -180.0f,
@@ -180,7 +180,7 @@ public class HmListViewHeader extends LinearLayout {
 	}
 
 	/**
-	 * 设置状态.
+	 * 设置状:".
 	 *
 	 * @param state the new state
 	 */
@@ -208,9 +208,9 @@ public class HmListViewHeader extends LinearLayout {
 				
 				if(lastRefreshTime==null){
 					lastRefreshTime = JackUtils.getCurrentDate("HH:mm:ss");
-					headerTimeView.setText("刷新时间：" + lastRefreshTime);
+					headerTimeView.setText("刷新时间:" + lastRefreshTime);
 				}else{
-					headerTimeView.setText("上次刷新时间：" + lastRefreshTime);
+					headerTimeView.setText("上次刷新时间:" + lastRefreshTime);
 				}
 				
 				break;
@@ -219,14 +219,14 @@ public class HmListViewHeader extends LinearLayout {
 					arrowImageView.clearAnimation();
 					arrowImageView.startAnimation(mRotateUpAnim);
 					tipsTextview.setText("松开刷新");
-					headerTimeView.setText("上次刷新时间：" + lastRefreshTime);
+					headerTimeView.setText("上次刷新时间:" + lastRefreshTime);
 					lastRefreshTime = JackUtils.getCurrentDate("HH:mm:ss");
 					
 				}
 				break;
 			case STATE_REFRESHING:
 				tipsTextview.setText("正在刷新...");
-				headerTimeView.setText("本次刷新时间：" + lastRefreshTime);
+				headerTimeView.setText("本次刷新时间:" + lastRefreshTime);
 				break;
 				default:
 			}
@@ -235,7 +235,7 @@ public class HmListViewHeader extends LinearLayout {
 	}
 	
 	/**
-	 * 设置header可见的高度.
+	 * 设置header可见的高:"
 	 *
 	 * @param height the new visiable height
 	 */
@@ -247,7 +247,7 @@ public class HmListViewHeader extends LinearLayout {
 	}
 
 	/**
-	 * 获取header可见的高度.
+	 * 获取header可见的高:"
 	 *
 	 * @return the visiable height
 	 */
@@ -266,16 +266,15 @@ public class HmListViewHeader extends LinearLayout {
 	}
 	
 	/**
-	 * 设置上一次刷新时间.
+	 * 设置上一次刷新时:"
 	 *
-	 * @param time 时间字符串
-	 */
+	 * @param time 时间字符:"	 */
 	public void setRefreshTime(String time) {
 		headerTimeView.setText(time);
 	}
 
 	/**
-	 * 获取header的高度.
+	 * 获取header的高:"
 	 *
 	 * @return 高度
 	 */
@@ -284,7 +283,7 @@ public class HmListViewHeader extends LinearLayout {
 	}
 	
 	/**
-	 * 描述：设置字体颜色.
+	 * 描述：设置字体颜:"
 	 *
 	 * @param color the new text color
 	 */
@@ -294,7 +293,7 @@ public class HmListViewHeader extends LinearLayout {
 	}
 	
 	/**
-	 * 描述：设置背景颜色.
+	 * 描述：设置背景颜:"
 	 *
 	 * @param color the new background color
 	 */
@@ -321,7 +320,7 @@ public class HmListViewHeader extends LinearLayout {
 	}
 
 	/**
-	 * 描述：得到当前状态.
+	 * 描述：得到当前状:"
 	 *
 	 * @return the state
 	 */
@@ -330,7 +329,7 @@ public class HmListViewHeader extends LinearLayout {
     }
 
 	/**
-	 * 设置提示状态文字的大小.
+	 * 设置提示状:"文字的大:"
 	 *
 	 * @param size the new state text size
 	 */
@@ -339,7 +338,7 @@ public class HmListViewHeader extends LinearLayout {
 	}
 
 	/**
-	 * 设置提示时间文字的大小.
+	 * 设置提示时间文字的大:"
 	 *
 	 * @param size the new time text size
 	 */
@@ -357,7 +356,7 @@ public class HmListViewHeader extends LinearLayout {
 	}
 
 	/**
-	 * 描述：设置顶部刷新图标.
+	 * 描述：设置顶部刷新图:"
 	 *
 	 * @param resId the new arrow image
 	 */

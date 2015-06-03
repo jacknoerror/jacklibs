@@ -1,4 +1,4 @@
-package com.hm.view.pullview;
+package com.view.pullview;
 
 import com.jacktao.utils.JackUtils;
 
@@ -13,7 +13,7 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 
 /**
- * 描述：加载更多Footer View类.
+ * 描述：加载更多Footer View�?
  *
  * @author xufx
  */
@@ -108,13 +108,12 @@ public class HmListViewFooter extends LinearLayout {
 		LinearLayout.LayoutParams layoutParamsFW = new LinearLayout.LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.WRAP_CONTENT);
 		addView(footerView,layoutParamsFW);
 		
-		//获取View的高度
-		JackUtils.measureView(this);
+		//获取View的高�?		JackUtils.measureView(this);
 		footerHeight = this.getMeasuredHeight();
 	}
 
 	/**
-	 * 设置当前状态.
+	 * 设置当前状�?.
 	 *
 	 * @param state the new state
 	 */
@@ -175,7 +174,7 @@ public class HmListViewFooter extends LinearLayout {
 
 	
 	/**
-	 * 描述：设置字体颜色.
+	 * 描述：设置字体颜�?
 	 *
 	 * @param color the new text color
 	 */
@@ -184,7 +183,7 @@ public class HmListViewFooter extends LinearLayout {
 	}
 	
 	/**
-	 * 描述：设置字体大小.
+	 * 描述：设置字体大�?
 	 *
 	 * @param size the new text size
 	 */
@@ -193,7 +192,7 @@ public class HmListViewFooter extends LinearLayout {
 	}
 	
 	/**
-	 * 描述：设置背景颜色.
+	 * 描述：设置背景颜�?
 	 *
 	 * @param color the new background color
 	 */
@@ -220,7 +219,7 @@ public class HmListViewFooter extends LinearLayout {
 	}
 
 	/**
-	 * 描述：获取高度.
+	 * 描述：获取高�?
 	 *
 	 * @return the footer height
 	 */

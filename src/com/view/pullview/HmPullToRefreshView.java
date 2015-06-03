@@ -1,4 +1,4 @@
-package com.hm.view.pullview;
+package com.view.pullview;
 
 import android.content.Context;
 import android.util.AttributeSet;
@@ -17,13 +17,13 @@ import android.widget.ScrollView;
  */
 public class HmPullToRefreshView extends LinearLayout {
 	
-	/** 上下文. */
+	/** 上下�? */
 	private Context mContext = null;
 	
-	/** 下拉刷新的开关. */
+	/** 下拉刷新的开�? */
     private boolean mEnablePullRefresh = true;
     
-    /** 加载更多的开关. */
+    /** 加载更多的开�? */
     private boolean mEnableLoadMore = true;
     
     /** x上一次保存的. */
@@ -50,7 +50,7 @@ public class HmPullToRefreshView extends LinearLayout {
 	/** footer view 高度. */
 	private int mFooterViewHeight;
 
-	/** 滑动状态. */
+	/** 滑动状�?. */
 	private int mPullState;
 	
 	/** 上滑动作. */
@@ -68,14 +68,14 @@ public class HmPullToRefreshView extends LinearLayout {
 	/** 正在加载更多. */
 	private boolean mPullLoading = false;
 
-	/** Footer加载更多监听器. */
+	/** Footer加载更多监听�? */
 	private OnFooterLoadListener mOnFooterLoadListener;
 	
-	/** Header下拉刷新监听器. */
+	/** Header下拉刷新监听�? */
 	private OnHeaderRefreshListener mOnHeaderRefreshListener;
 
 	/**
-	 * 构造.
+	 * 构�?.
 	 * @param context the context
 	 * @param attrs the attrs
 	 */
@@ -85,7 +85,7 @@ public class HmPullToRefreshView extends LinearLayout {
 	}
 
 	/**
-	 * 构造.
+	 * 构�?.
 	 * @param context the context
 	 */
 	public HmPullToRefreshView(Context context) {
@@ -113,7 +113,7 @@ public class HmPullToRefreshView extends LinearLayout {
         mHeaderView.setGravity(Gravity.BOTTOM);
 
 		LayoutParams params = new LayoutParams(LayoutParams.MATCH_PARENT, mHeaderViewHeight);
-		// 设置topMargin的值为负的header View高度,即将其隐藏在最上方
+		// 设置topMargin的�?为负的header View高度,即将其隐藏在�?���?
 		params.topMargin = -(mHeaderViewHeight);
 		addView(mHeaderView, params);
 
@@ -132,7 +132,7 @@ public class HmPullToRefreshView extends LinearLayout {
 	}
 
 	/**
-	 * 在此添加footer view保证添加到linearlayout中的最后.
+	 * 在此添加footer view保证添加到linearlayout中的�?��.
 	 */
 	@Override
 	public void onFinishInflate() {
@@ -181,7 +181,7 @@ public class HmPullToRefreshView extends LinearLayout {
 			mLastMotionY = y;
 			break;
 		case MotionEvent.ACTION_MOVE:
-			// deltaY > 0 是向下运动,< 0是向上运动
+			// deltaY > 0 是向下运�?< 0是向上运�?
 			int deltaX = x - mLastMotionX;
 			int deltaY = y - mLastMotionY;
 			//解决点击与移动的冲突
@@ -197,8 +197,8 @@ public class HmPullToRefreshView extends LinearLayout {
 	}
 
 	/*
-	 * 如果在onInterceptTouchEvent()方法中没有拦截(即onInterceptTouchEvent()方法中 return
-	 * false)则由PullToRefreshView 的子View来处理;否则由下面的方法来处理(即由PullToRefreshView自己来处理)
+	 * 如果在onInterceptTouchEvent()方法中没有拦�?即onInterceptTouchEvent()方法�?return
+	 * false)则由PullToRefreshView 的子View来处�?否则由下面的方法来处�?即由PullToRefreshView自己来处�?
 	 */
 	/* (non-Javadoc)
 	 * @see android.view.View#onTouchEvent(android.view.MotionEvent)
@@ -222,22 +222,22 @@ public class HmPullToRefreshView extends LinearLayout {
 			}
 			mLastMotionY = y;
 			break;
-		//UP和CANCEL执行相同的方法
+		//UP和CANCEL执行相同的方�?
 		case MotionEvent.ACTION_UP:
 		case MotionEvent.ACTION_CANCEL:
 			int topMargin = getHeaderTopMargin();
 			if (mPullState == PULL_DOWN_STATE) {
 				if (topMargin >= 0) {
-					// 开始刷新
+					// �?��刷新
 					headerRefreshing();
 				} else {
 					// 还没有执行刷新，重新隐藏
 					setHeaderTopMargin(-mHeaderViewHeight);
 				}
 			} else if (mPullState == PULL_UP_STATE) {
-				//控制在什么时候加载更多
+				//控制在什么时候加载更�?
 				if (Math.abs(topMargin) >= mHeaderViewHeight + mFooterViewHeight) {
-					// 开始执行footer 刷新
+					// �?��执行footer 刷新
 					footerLoading();
 				} else {
 					// 还没有执行刷新，重新隐藏
@@ -253,7 +253,7 @@ public class HmPullToRefreshView extends LinearLayout {
 	/**
 	 * 判断滑动方向，和是否响应事件.
 	 *
-	 * @param deltaY  deltaY > 0 是向下运动,< 0是向上运动
+	 * @param deltaY  deltaY > 0 是向下运�?< 0是向上运�?
 	 * @return true, if is refresh view scroll
 	 */
 	private boolean isRefreshViewScroll(int deltaY) {
@@ -271,7 +271,7 @@ public class HmPullToRefreshView extends LinearLayout {
 				}
 				View child = mAdapterView.getChildAt(0);
 				if (child == null) {
-					// 如果mAdapterView中没有数据,不拦截
+					// 如果mAdapterView中没有数�?不拦�?
 					//return false;
 					
 					mPullState = PULL_DOWN_STATE;
@@ -295,14 +295,14 @@ public class HmPullToRefreshView extends LinearLayout {
 				}
 				View lastChild = mAdapterView.getChildAt(mAdapterView.getChildCount() - 1);
 				if (lastChild == null) {
-					// 如果mAdapterView中没有数据,不拦截
+					// 如果mAdapterView中没有数�?不拦�?
 					//return false;
 					
 					mPullState = PULL_UP_STATE;
 					return true;
 				}
-				// 最后一个子view的Bottom小于父View的高度说明mAdapterView的数据没有填满父view,
-				// 等于父View的高度说明mAdapterView已经滑动到最后
+				// �?���?��子view的Bottom小于父View的高度说明mAdapterView的数据没有填满父view,
+				// 等于父View的高度说明mAdapterView已经滑动到最�?
 				if (lastChild.getBottom() <= getHeight() && mAdapterView.getLastVisiblePosition() == mAdapterView.getCount() - 1) {
 					mPullState = PULL_UP_STATE;
 					return true;
@@ -333,9 +333,9 @@ public class HmPullToRefreshView extends LinearLayout {
 	}
 
 	/**
-	 * header 准备刷新,手指移动过程,还没有释放.
+	 * header 准备刷新,手指移动过程,还没有释�?
 	 *
-	 * @param deltaY 手指滑动的距离
+	 * @param deltaY 手指滑动的距�?
 	 */
 	private void headerPrepareToRefresh(int deltaY) {
 		if (mPullRefreshing || mPullLoading) {
@@ -343,7 +343,7 @@ public class HmPullToRefreshView extends LinearLayout {
 		}
 		
 		int newTopMargin = updateHeaderViewTopMargin(deltaY);
-		// 当header view的topMargin>=0时，说明header view完全显示出来了 ,修改header view 的提示状态
+		// 当header view的topMargin>=0时，说明header view完全显示出来�?,修改header view 的提示状�?
 		if (newTopMargin >= 0 && mHeaderView.getState() != HmListViewHeader.STATE_REFRESHING) {
 		    //提示松开刷新
 		    mHeaderView.setState(HmListViewHeader.STATE_READY);
@@ -355,18 +355,18 @@ public class HmPullToRefreshView extends LinearLayout {
 	}
 
 	/**
-	 * footer 准备刷新,手指移动过程,还没有释放 移动footer view高度同样和移动header view
-	 * 高度是一样，都是通过修改header view的topmargin的值来达到.
+	 * footer 准备刷新,手指移动过程,还没有释�?移动footer view高度同样和移动header view
+	 * 高度是一样，都是通过修改header view的topmargin的�?来达�?
 	 *
-	 * @param deltaY  手指滑动的距离
+	 * @param deltaY  手指滑动的距�?
 	 */
 	private void footerPrepareToRefresh(int deltaY) {
 		if (mPullRefreshing || mPullLoading) {
 			return;
 		}
 		int newTopMargin = updateHeaderViewTopMargin(deltaY);
-		// 如果header view topMargin 的绝对值大于或等于header + footer 的高度
-		// 说明footer view 完全显示出来了，修改footer view 的提示状态
+		// 如果header view topMargin 的绝对�?大于或等于header + footer 的高�?
+		// 说明footer view 完全显示出来了，修改footer view 的提示状�?
 		if (Math.abs(newTopMargin) >= (mHeaderViewHeight + mFooterViewHeight) && mFooterView.getState()  != HmListViewFooter.STATE_LOADING) {
 			mFooterView.setState(HmListViewFooter.STATE_READY);
 		} else if (Math.abs(newTopMargin) < (mHeaderViewHeight + mFooterViewHeight)) {
@@ -375,7 +375,7 @@ public class HmPullToRefreshView extends LinearLayout {
 	}
 
 	/**
-	 * 修改Header view top margin的值.
+	 * 修改Header view top margin的�?.
 	 *
 	 * @param deltaY the delta y
 	 * @return the int
@@ -383,12 +383,12 @@ public class HmPullToRefreshView extends LinearLayout {
 	private int updateHeaderViewTopMargin(int deltaY) {
 		LayoutParams params = (LayoutParams) mHeaderView.getLayoutParams();
 		float newTopMargin = params.topMargin + deltaY * 0.3f;
-		// 这里对上拉做一下限制,因为当前上拉后然后不释放手指直接下拉,会把下拉刷新给触发了
-		// 表示如果是在上拉后一段距离,然后直接下拉
+		// 这里对上拉做�?��限制,因为当前上拉后然后不释放手指直接下拉,会把下拉刷新给触发了
+		// 表示如果是在上拉后一段距�?然后直接下拉
 		if (deltaY > 0 && mPullState == PULL_UP_STATE && Math.abs(params.topMargin) <= mHeaderViewHeight) {
 			return params.topMargin;
 		}
-		// 同样地,对下拉做一下限制,避免出现跟上拉操作时一样的bug
+		// 同样�?对下拉做�?��限制,避免出现跟上拉操作时�?��的bug
 		if (deltaY < 0 && mPullState == PULL_DOWN_STATE && Math.abs(params.topMargin) >= mHeaderViewHeight) {
 			return params.topMargin;
 		}
@@ -423,7 +423,7 @@ public class HmPullToRefreshView extends LinearLayout {
 	}
 
 	/**
-	 * 设置header view 的topMargin的值.
+	 * 设置header view 的topMargin的�?.
 	 *
 	 * @param topMargin the new header top margin
 	 */
@@ -435,14 +435,14 @@ public class HmPullToRefreshView extends LinearLayout {
 	}
 
 	/**
-	 * header view 完成更新后恢复初始状态.
+	 * header view 完成更新后恢复初始状�?
 	 */
 	public void onHeaderRefreshFinish() {
 		setHeaderTopMargin(-mHeaderViewHeight);
 		mHeaderView.setState(HmListViewHeader.STATE_NORMAL); 
 		if(mAdapterView!=null){
 			mCount = mAdapterView.getCount();
-			//判断有没有数据
+			//判断有没有数�?
 			if(mCount > 0){
 				mFooterView.setState(HmListViewFooter.STATE_READY);
 			}else{
@@ -456,7 +456,7 @@ public class HmPullToRefreshView extends LinearLayout {
 	}
 
 	/**
-	 * footer view 完成更新后恢复初始状态.
+	 * footer view 完成更新后恢复初始状�?
 	 */
 	public void onFooterLoadFinish() {
 		setHeaderTopMargin(-mHeaderViewHeight);
@@ -508,23 +508,23 @@ public class HmPullToRefreshView extends LinearLayout {
 
 
 	/**
-     * 打开或者关闭下拉刷新功能.
-     * @param enable 开关标记
+     * 打开或�?关闭下拉刷新功能.
+     * @param enable �?��标记
      */
     public void setPullRefreshEnable(boolean enable) {
         mEnablePullRefresh = enable;
     }
 
     /**
-     * 打开或者关闭加载更多功能.
-     * @param enable 开关标记
+     * 打开或�?关闭加载更多功能.
+     * @param enable �?��标记
      */
     public void setLoadMoreEnable(boolean enable) {
         mEnableLoadMore = enable;
     }
 
     /**
-     * 下拉刷新是打开的吗.
+     * 下拉刷新是打�?���?
      *
      * @return true, if is enable pull refresh
      */
@@ -533,7 +533,7 @@ public class HmPullToRefreshView extends LinearLayout {
     }
 
     /**
-     * 加载更多是打开的吗.
+     * 加载更多是打�?���?
      *
      * @return true, if is enable load more
      */

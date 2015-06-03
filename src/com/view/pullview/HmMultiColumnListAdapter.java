@@ -1,11 +1,11 @@
-package com.hm.view.pullview;
+package com.view.pullview;
 
 import android.database.DataSetObservable;
 import android.database.DataSetObserver;
 import android.view.ViewGroup;
 
 /**
- * 描述：MultiColumnList的适配器
+ * 描述：MultiColumnList的�?配器
  *
  * @author xufx
  */

@@ -1,4 +1,4 @@
-package com.hm.view.pullview;
+package com.view.pullview;
 
 import android.util.SparseArray;
 import android.view.View;
