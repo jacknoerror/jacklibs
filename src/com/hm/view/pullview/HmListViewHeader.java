@@ -5,8 +5,10 @@ import android.graphics.Bitmap;
 import android.graphics.Color;
 import android.graphics.drawable.Drawable;
 import android.util.AttributeSet;
+import android.util.TypedValue;
 import android.view.Gravity;
 import android.view.View;
+import android.view.ViewGroup;
 import android.view.animation.Animation;
 import android.view.animation.RotateAnimation;
 import android.widget.FrameLayout;
@@ -46,7 +48,7 @@ public class HmListViewHeader extends LinearLayout {
 	/** 时间的View. */
 	private TextView headerTimeView;
 	
-	/** 当前�?". */
+	/** 当前�?". */
 	private int mState = -1;
 
 	/** 向上的动:" */
@@ -116,7 +118,7 @@ public class HmListViewHeader extends LinearLayout {
 		//从包里获取的箭头图片
 //		arrowImage = HmFileUtil.getBitmapFromSrc("image/arrow.png");
 //		arrowImageView.setImageBitmap(arrowImage);
-		arrowImageView.setImageResource(R.drawable.ic_launcher);
+		arrowImageView.setImageResource(R.drawable.arrow_up);
 		
 		//style="?android:attr/progressBarStyleSmall" 默认的样:"
 		headerProgressBar = new ProgressBar(context,null,android.R.attr.progressBarStyle);
@@ -141,6 +143,8 @@ public class HmListViewHeader extends LinearLayout {
 		headTextLayout.addView(headerTimeView,layoutParamsWW2);
 		tipsTextview.setTextColor(Color.rgb(107, 107, 107));
 		headerTimeView.setTextColor(Color.rgb(107, 107, 107));
+		tipsTextview.setTextSize(TypedValue.COMPLEX_UNIT_PX,30);//
+		headerTimeView.setTextSize(TypedValue.COMPLEX_UNIT_PX,27);//
 //		HmViewUtil.setTextSize(tipsTextview,30);
 //		HmViewUtil.setTextSize(headerTimeView,27);
 		
@@ -162,7 +166,7 @@ public class HmListViewHeader extends LinearLayout {
 		
 		this.addView(headerView,lp);
 		//获取View的高:"
-		//		HmViewUtil.measureView(this);
+				 measureView(this);
 		headerHeight = this.getMeasuredHeight();
 		
 		mRotateUpAnim = new RotateAnimation(0.0f, -180.0f,
@@ -180,7 +184,7 @@ public class HmListViewHeader extends LinearLayout {
 	}
 
 	/**
-	 * 设置�?".
+	 * 设置�?".
 	 *
 	 * @param state the new state
 	 */
@@ -329,7 +333,7 @@ public class HmListViewHeader extends LinearLayout {
     }
 
 	/**
-	 * 设置提示�?"文字的大:"
+	 * 设置提示�?"文字的大:"
 	 *
 	 * @param size the new state text size
 	 */
@@ -364,6 +368,25 @@ public class HmListViewHeader extends LinearLayout {
 		this.arrowImageView.setImageResource(resId);
 	}
 	
-    
 
+	private   void measureView(View view) {
+		ViewGroup.LayoutParams p = view.getLayoutParams();
+		if (p == null) {
+			p = new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,
+					ViewGroup.LayoutParams.WRAP_CONTENT);
+		}
+
+		int childWidthSpec = ViewGroup.getChildMeasureSpec(0, 0 + 0, p.width);
+		int lpHeight = p.height;
+		int childHeightSpec;
+		if (lpHeight > 0) {
+			childHeightSpec = MeasureSpec.makeMeasureSpec(lpHeight,
+					MeasureSpec.EXACTLY);
+		} else {
+			childHeightSpec = MeasureSpec.makeMeasureSpec(0,
+					MeasureSpec.UNSPECIFIED);
+		}
+		view.measure(childWidthSpec, childHeightSpec);
+	}
 }
+
