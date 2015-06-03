@@ -12,7 +12,9 @@ import java.io.OutputStreamWriter;
 import java.io.UnsupportedEncodingException;
 import java.security.MessageDigest;
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
+import java.util.GregorianCalendar;
 
 import android.app.Activity;
 import android.app.ActivityManager;
@@ -42,6 +44,8 @@ import android.os.Environment;
 import android.text.TextPaint;
 import android.util.Log;
 import android.view.View;
+import android.view.ViewGroup;
+import android.view.View.MeasureSpec;
 import android.view.animation.Animation;
 import android.view.animation.DecelerateInterpolator;
 import android.view.animation.TranslateAnimation;
@@ -606,5 +610,48 @@ public class JackUtils {
 			intent.setDataAndType(Uri.fromFile(file), "image/*");
 			context.startActivity(intent);
 		}
+	}
+	/**
+	 * 描述：获取表示当前日期时间的字符串.
+	 *
+	 * @param format  格式化字符串，如："yyyy-MM-dd HH:mm:ss"
+	 * @return String String类型的当前日期时间
+	 */
+	public static String getCurrentDate(String format) {
+		String curDateTime = null;
+		try {
+			SimpleDateFormat mSimpleDateFormat = new SimpleDateFormat(format);
+			Calendar c = new GregorianCalendar();
+			curDateTime = mSimpleDateFormat.format(c.getTime());
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return curDateTime;
+
+	}
+	/**
+	 * 测量这个view
+	 * 最后通过getMeasuredWidth()获取宽度和高度.
+	 * @param view 要测量的view
+	 * @return 测量过的view
+	 */
+	public static void measureView(View view) {
+		ViewGroup.LayoutParams p = view.getLayoutParams();
+		if (p == null) {
+			p = new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,
+					ViewGroup.LayoutParams.WRAP_CONTENT);
+		}
+
+		int childWidthSpec = ViewGroup.getChildMeasureSpec(0, 0 + 0, p.width);
+		int lpHeight = p.height;
+		int childHeightSpec;
+		if (lpHeight > 0) {
+			childHeightSpec = MeasureSpec.makeMeasureSpec(lpHeight,
+					MeasureSpec.EXACTLY);
+		} else {
+			childHeightSpec = MeasureSpec.makeMeasureSpec(0,
+					MeasureSpec.UNSPECIFIED);
+		}
+		view.measure(childWidthSpec, childHeightSpec);
 	}
 }
