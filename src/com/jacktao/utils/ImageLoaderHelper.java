@@ -7,6 +7,7 @@ import android.annotation.SuppressLint;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.Matrix;
+import android.graphics.BitmapFactory.Options;
 import android.os.Build;
 
 import com.nostra13.universalimageloader.cache.disc.naming.Md5FileNameGenerator;

@@ -30,6 +30,8 @@
         android:layout_alignParentRight="true"
         android:layout_centerVertical="true"
         android:padding="@dimen/jack_margin_double"
+        android:dividerPadding="1.5dp"
+        android:showDividers="middle"
         >
         </LinearLayout>
     
